@@ -1,8 +1,9 @@
 from aiogram.types import Message 
 from aiogram.fsm.context import FSMContext
 from state.register import RegisterState
+from utils.api import create_user
 import re
-from api import create_user
+
 
 
 async def start_register(message: Message, state: FSMContext):
