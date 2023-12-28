@@ -4,4 +4,4 @@ from modules.blog.models import TelegramBot
 class TelegramMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TelegramBot
-        fields = '__all__'
+        fields = ('id_user', 'name_user', 'course','group','phone_user')
