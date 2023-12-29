@@ -33,7 +33,7 @@ async def register_phone(message: Message, state: FSMContext):
         reg_data = await state.get_data()
         reg_name = reg_data.get('regname')
         reg_phone = reg_data.get('regphone')
-        reg_course = reg_data.get('regcourse')
+        reg_course = reg_data.get('regcource')
         reg_group = reg_data.get('reggroup')
         msg=f'Приятно познакомится {reg_name} \n\n Телефон: {reg_phone} \n Регистрация завершена'
         await message.answer(msg)

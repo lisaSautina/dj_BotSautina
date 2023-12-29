@@ -1,10 +1,7 @@
 from django.db import models
 
 
-
-
 class TelegramBot(models.Model): 
-
     id_user = models.IntegerField()
     name_user = models.CharField(verbose_name='Имя', max_length=255, null= True, blank=True)
     course = models.IntegerField(verbose_name='Курс',null= True,blank=True)

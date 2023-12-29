@@ -35,7 +35,6 @@ dp.message.register(register_phone, RegisterState.regPhone)
 
 
 
-
 async def start():
     await set_commands(bot)
     try:
