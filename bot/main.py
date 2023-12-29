@@ -7,7 +7,7 @@ from aiogram.filters import Command
 from utils.commands import set_commands
 from handlers.start import get_start
 from state.register import RegisterState
-from handlers.register import start_register, register_name, register_course, register_group, register_phone
+from handlers.register import start_register, register_name, register_course, register_group, register_phone, process_answer
 
 
 load_dotenv()
@@ -32,7 +32,7 @@ dp.message.register(register_name, RegisterState.regName)
 dp.message.register(register_course, RegisterState.regCourse)
 dp.message.register(register_group, RegisterState.regGroup)
 dp.message.register(register_phone, RegisterState.regPhone)
-
+dp.message.register(process_answer, RegisterState.answer)
 
 
 async def start():

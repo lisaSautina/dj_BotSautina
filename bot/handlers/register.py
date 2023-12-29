@@ -3,7 +3,7 @@ from aiogram.fsm.context import FSMContext
 from state.register import RegisterState
 from utils.api import create_user
 import re
-
+from aiogram import types
 
 
 async def start_register(message: Message, state: FSMContext):
@@ -35,14 +35,20 @@ async def register_phone(message: Message, state: FSMContext):
         reg_phone = reg_data.get('regphone')
         reg_course = reg_data.get('regcource')
         reg_group = reg_data.get('reggroup')
-        msg=f'Приятно познакомится {reg_name} \n\n Телефон: {reg_phone} \n Регистрация завершена'
+        msg=f'Приятно познакомится {reg_name} \n\n Телефон: {reg_phone} \n Хотели ли получать рассылку о новых мероприятиях НГУЭУ?'
         await message.answer(msg)
         await create_user(message.from_user.id, reg_name, reg_course, reg_group, reg_phone)
-        await state.clear()
-        
+        await state.set_state(RegisterState.answer)
     else:
         await message.answer(f'Номер указан в неправильном формате ')
 
 
-
+async def process_answer(message: types.Message, state: FSMContext):
+    answer = message.text.lower()
+    if answer == 'да':
+        await message.answer("Вы успешно зарегистрированы и подписаны на рассылку!")
+    elif answer == 'нет':
+        await message.answer("Вы успешно зарегистрированы, но не подписаны на рассылку.")
+    await state.clear()
     
+

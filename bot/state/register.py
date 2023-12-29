@@ -5,4 +5,5 @@ class RegisterState(StatesGroup):
     regPhone = State()
     regGroup = State()
     regCourse = State()
+    answer = State()
 
