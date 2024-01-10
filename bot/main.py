@@ -1,14 +1,15 @@
-from aiogram import Bot, Dispatcher, F, types
+from aiogram import Bot, Dispatcher, F, types, filters
 import asyncio
 from dotenv import load_dotenv
 import os
+
 from aiogram.filters import Command
- 
+from aiogram.fsm.context import FSMContext
 from utils.commands import set_commands
 from handlers.start import get_start
 from state.register import RegisterState
 from handlers.register import start_register, register_name, register_course, register_group, register_phone, process_answer
-
+# from handlers.sendings import get_mailing
 
 load_dotenv()
 
@@ -25,7 +26,7 @@ async def start_bot(bot: Bot):
 
 dp.startup.register(start_bot)
 dp.message.register(get_start, Command(commands='start')) 
-
+# dp.message.register(get_mailing, Command(commands='sending'))
 
 dp.message.register(start_register, F.text=='Записаться на мероприятие')
 dp.message.register(register_name, RegisterState.regName)
@@ -33,6 +34,11 @@ dp.message.register(register_course, RegisterState.regCourse)
 dp.message.register(register_group, RegisterState.regGroup)
 dp.message.register(register_phone, RegisterState.regPhone)
 dp.message.register(process_answer, RegisterState.answer)
+
+ALLOWED_USER_ID = 1135836273
+
+
+
 
 
 async def start():

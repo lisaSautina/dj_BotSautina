@@ -8,3 +8,12 @@ register_keyboard = ReplyKeyboardMarkup(keyboard=[
     )
     ]
 ], resixe_keyboard=True, one_time_keyboard=True, input_field_placeholder="Для продолжения нажмите на кнопку ниже")
+
+get_yes_no_keyboard = ReplyKeyboardMarkup(keyboard=[
+    [
+        KeyboardButton(text='да'),
+        KeyboardButton(text='нет'),
+    ]
+], resixe_keyboard=True, one_time_keyboard=True)
+
+
